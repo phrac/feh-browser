@@ -1,0 +1,171 @@
+" PACKAGE " version " VERSION "
+
+Usage : " PACKAGE " [options] <files or directories ...>
+
+ This is just a short option summary.  Please see \"man " PACKAGE "\" for details.
+
+OPTIONS
+ -h, --help                Show help and exit
+ -v, --version             Show version information and exit
+ -V, --verbose             Show progress bars and other extra information
+ -q, --quiet               Hide non-fatal errors. May be used with --verbose
+ -T, --theme THEME         Load options with name THEME
+ -r, --recursive           Recursively expand any directories in FILE to
+                           the content of those directories. (Take it easy)
+ -z, --randomize           Randomize the filelist
+ --no-jump-on-resort       Don't jump to the first image when the filelist
+                           is resorted
+ -g, --geometry STRING     Limit the window size to STRING, like \"640x480\"
+ -f, --filelist FILE       Load/save images from/to the FILE filelist
+ -|, --start-at POSITION   Start at POSITION in the filelist
+ -p, --preload             Remove unlaodable files from the internal filelist
+                           before attempting to display anything
+ -., --scale-down          Automatically scale down images to fit the screen
+                           size
+ -F, --fullscreen          Make the window full screen
+ -Z, --auto-zoom           Zoom picture to screen size in full screen mode
+     --zoom PERCENT        Zooms images by a PERCENT, when in full screen
+                           mode or when window geometry is fixed. If combined
+                           with --auto-zoom, zooming will be limited to the
+                           the size.
+     --keep-zoom-vp        Keep viewport zoom and settings while changing images
+ -w, --multiwindow         Open all files at once, one window per image
+ -x, --borderless          Create borderless windows
+ -d, --draw-filename       Show the filename in the image window
+     --draw-tinted         Show overlay texts on semi-transparent background
+     --draw-exif           Show some Exif information (if compiled with exif=1)
+ -^, --title TITLE         Set window title (see FORMAT SPECIFIERS)
+ -D, --slideshow-delay NUM Set delay between automatically changing slides
+     --cycle-once          Exit after one loop through the slideshow
+ -R, --reload NUM          Reload images after NUM seconds
+ -k, --keep-http           Keep local copies when viewing HTTP/FTP files
+ -K, --caption-path PATH   Path to caption directory, enables caption display
+ -j, --output-dir          With -k: Output directory for saved files
+ -l, --list                list mode: ls-style output with image information
+ -L, --customlist FORMAT   list mode with custom output, see FORMAT SPECIFIERS
+ -U, --loadable            List all loadable files. No image display
+ -u, --unloadable          List all unloadable files. No image display
+ -S, --sort SORT_TYPE      Sort files by:
+                           name, filename, mtime, width, height, pixels, size,
+                           or format
+ -n, --reverse             Reverse sort order
+ -A, --action ACTION       Specify action to perform when pressing <return>.
+                           Executed by /bin/sh, may contain FORMAT SPECIFIERS
+     --action[1-9]         Extra actions triggered by pressing keys <1>to <9>
+ -G, --draw-actions        Show the defined actions in the image window
+     --force-aliasing      Disable antialiasing
+ -m, --montage             Enable montage mode
+ -i, --index               Create an index print of all images
+     --info CMD            Run CMD and show its output in the image window
+ -t, --thumbnails          Show images as clickable thumbnails
+ -P, --cache-thumbnails    Enable thumbnail caching for thumbnail mode.
+                           Only works with thumbnails <= 256x256 pixels
+ -J, --thumb-redraw N      Redraw thumbnail window every N images
+ -~, --thumb-title STRING  Title for windows opened from thumbnail mode
+ -I, --fullindex           Index mode with additional image information
+     --index-name BOOL     Show/Don't show filename in index/thumbnail mode
+     --index-size BOOL     Show/Don't show filesize in index/thumbnail mode
+     --index-dim BOOL      Show/Don't show dimensions in index/thumbnail mode
+     --bg-center FILE      Set FILE as centered desktop background
+     --bg-fill FILE        Like --bg-scale, but preserves aspect ratio by
+                           zooming the image until it fits. May cut off
+                           corners
+     --bg-max FILE         Like --bg-fill, but scale the image to the maximum
+                           size that fits the screen with black borders on one
+                           side
+     --bg-scale FILE       Set FILE as scaled desktop background. This will
+                           fill the whole background, but the images' aspect
+                           ratio may not be preserved
+     --bg-tile FILE        Set FILE as tiled desktop background
+     --no-fehbg            Do not write a ~/.fehbg file
+ -C, --fontpath PATH       Specify an extra directory to look in for fonts,
+                           can be used multiple times to add multiple paths.
+ -M, --menu-font FONT      Use FONT for the font in menus.
+ -B, --image-bg STYLE      Set background for transparent images and the like.
+                           Accepted values: white, black, default
+ -N, --no-menus            Don't load or show any menus.
+     --no-xinerama         Disable Xinerama support
+     --no-screen-clip      Do not limit window size to screen size
+ -Y, --hide-pointer        Hide the pointer
+
+MONTAGE MODE OPTIONS
+ -X, --ignore-aspect       Set thumbnail to specified width/height without
+                           retaining aspect ratio
+ -s, --stretch             Scale up images if they are smaller than the
+                           specified thumbnail size
+ -y, --thumb-width NUM     Set thumbnail width in pixels
+ -E, --thumb-height NUM    Set thumbnail height in pixels
+ -W, --limit-width NUM     Limit the width of the montage in pixels
+ -H, --limit-height NUM    Limit the height of the montage in pixels
+                           (at least one of these two must be specified)
+ -b, --bg FILE|trans       Set montage background
+ -a, --alpha NUM           Set thumbnail transparency level (0 .. 255)
+ -o, --output FILE         Save the created montage to FILE
+ -O, --output-only  FILE   Just save the created montage to FILE
+                           WITHOUT displaying it
+ -e, --font FONT           Set font for thumbnail information, in the form
+                           fontname/pointsize
+
+INDEX MODE OPTIONS
+ -@, --title-font FONT     Use FONT to print a title on the index, if no
+                           font is specified, a title will not be printed
+
+FORMAT SPECIFIERS
+ %f     image path/filename
+ %n     image name
+ %s     image size (bytes)
+ %p     image pixel size
+ %w     image width
+ %h     image height
+ %t     image format
+ %P     " PACKAGE "
+ %v     " PACKAGE " version
+ %m     current mode (slideshow, multiwindow...)
+ %l     total number of files in the filelist
+ %u     current file number
+ %%     %
+ \\n     newline
+
+KEYS
+ p, <BACKSPACE>, <LEFT>  Go to previous slide
+ n, <SPACE>, <RIGHT>     Go to next slide
+ r                       Reload image
+ v                       Toggle fullscreen
+ m                       Show menu
+ c                       Enable caption entry mode
+ w                       Resize window to current image dimensions
+ h                       Pause/Continue the slideshow
+ z                       Jump to a random position in the current filelist
+ a                       Toggle action display (--draw-actions)
+ d                       Toggle filename display (--draw-filename)
+ s                       Save current image to unique filename
+ f                       Save current filelist to unique filename
+ <, >                    In place editing, rotate 90 degrees right/left
+ <HOME>                  Go to first slide
+ <END>                   Go to last slide
+ <ESCAPE>                Quit the slideshow
+ +                       Increase reload delay
+ -                       Decrease reload delay
+ <DELETE>                Remove the currently viewed file from the filelist
+ <CTRL+DELETE>           Like <DELETE>, but also removes the file from the
+                         filesystem. Caution: Does _not_ ask for confirmation
+ x                       Close current window
+ q                       Quit " PACKAGE "
+ <KEYPAD LEFT>           Move the image to the left
+ <KEYPAD RIGHT>          Move the image to the right
+ <KEYPAD UP>             Move the image up
+ <KEYPAD DOWN>           Move the image down
+ <KEYPAD BEGIN>          Antialias the image
+ <KEYPAD +>              Zoom in
+ <KEYPAD ->              Zoom out
+ <KEYPAD *>              Zoom to 100%
+ <KEYPAD />              Zoom to fit the window
+ <ENTER>, 0              Run action specified by --action option
+ 1-9                     Run action 1-9 specified by --action[1-9] options
+
+This program is free software, see the file COPYING for licensing info.
+Copyright Tom Gilbert (and various contributors) 1999-2003.
+Copyright Daniel Friesel 2010-2011.
+
+Homepage: http://feh.finalrewind.org
+Report bugs to <derf@finalrewind.org> or #feh on irc.oftc.net.
